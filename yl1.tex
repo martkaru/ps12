@@ -15,10 +15,10 @@ Koduülesanded 1}
     \cfrac{
       \langle y := y-x, s_0 \rangle \rightarrow s_1
     }{
-      \langle 
-        \textrm{if} \; x \leq \; y \;
-          \textrm{then} \; y := y-x \;
-          \textrm{else} \;  x:= x-y
+      \langle
+        \text{if } x \leq y
+          \text{ then } y := y-x
+          \text{ else } x := x-y
         , s_0
       \rangle \rightarrow s_1
     }
@@ -26,10 +26,10 @@ Koduülesanded 1}
     T_1
   }{
     \langle 
-    \textrm{while} \; x \neq  y \; \textrm{do} \;
-      (\textrm{if} \; x \leq \; y \;
-        \textrm{then} \; y := y-x \;
-        \textrm{else} \;  x:= x-y )
+    \text{while } x \neq  y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x := x-y)
       , s_0
     \rangle \rightarrow s_4
   }
@@ -41,9 +41,9 @@ Koduülesanded 1}
       \langle x := x-y, s_1 \rangle \rightarrow s_2
     }{
       \langle 
-        \textrm{if} \; x \leq \; y \;
-          \textrm{then} \; y := y-x \;
-          \textrm{else} \;  x:= x-y
+        \text{if } x \leq y
+          \text{ then } y := y-x
+          \text{ else } x:= x-y
         , s_1
       \rangle \rightarrow s_2
     }
@@ -51,10 +51,10 @@ Koduülesanded 1}
     T_2
   }{
     \langle 
-    \textrm{while} \; x \neq  y \; \textrm{do} \;
-      (\textrm{if} \; x \leq \; y \;
-        \textrm{then} \; y := y-x \;
-        \textrm{else} \;  x:= x-y )
+    \text{while } x \neq y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x:= x-y)
       , s_1
     \rangle \rightarrow s_4
   }
@@ -66,9 +66,9 @@ Koduülesanded 1}
       \langle y := y-x, s_2 \rangle \rightarrow s_3
     }{
       \langle 
-        \textrm{if} \; x \leq \; y \;
-          \textrm{then} \; y := y-x \;
-          \textrm{else} \;  x:= x-y
+        \text{if } x \leq y
+          \text{ then } y := y-x
+          \text{ else } x := x-y
         , s_2
       \rangle \rightarrow s_3
     }
@@ -76,10 +76,10 @@ Koduülesanded 1}
     T_3
   }{
     \langle 
-    \textrm{while} \; x \neq  y \; \textrm{do} \;
-      (\textrm{if} \; x \leq \; y \;
-        \textrm{then} \; y := y-x \;
-        \textrm{else} \;  x:= x-y )
+    \text{while} x \neq  y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x := x-y)
       , s_2
     \rangle \rightarrow s_4
   }
@@ -89,19 +89,19 @@ Koduülesanded 1}
     \cfrac{
       \langle x := x-y, s_3 \rangle \rightarrow s_4
     }{
-      \langle 
-        \textrm{if} \; x \leq \; y \;
-          \textrm{then} \; y := y-x \;
-          \textrm{else} \;  x:= x-y
+      \langle
+        \text{if } x \leq y
+          \text{ then } y := y-x
+          \text{ else } x := x-y
         , s_3
       \rangle \rightarrow s_4
     }
   }{
-    \langle 
-    \textrm{while} \; x \neq  y \; \textrm{do} \;
-      (\textrm{if} \; x \leq \; y \;
-        \textrm{then} \; y := y-x \;
-        \textrm{else} \;  x:= x-y )
+    \langle
+    \text{while } x \neq y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x := x-y )
       , s_1
     \rangle \rightarrow s_4
   }
@@ -114,5 +114,25 @@ Koduülesanded 1}
 \[s_4 = [x \mapsto 6, y \mapsto 6]\]
 
 \subsection{Struktuurses operatsioonisemantikas}
+
+\(
+  \langle
+  \text{while } x \neq y \text{ do }
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x:= x-y), s
+  \rangle
+  \\
+  \quad \Rightarrow
+  \langle
+  \text{while } x \neq y \text{ do }
+  (\text{ if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x:= x-y),
+    s[y \mapsto 12]
+  \rangle
+\)
+
+
 
 \end{document}

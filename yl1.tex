@@ -1,4 +1,4 @@
-\documentclass[a4paper,oneside,draft]{article}
+\documentclass[a4paper,oneside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 \begin{document}
@@ -115,24 +115,84 @@ Koduülesanded 1}
 
 \subsection{Struktuurses operatsioonisemantikas}
 
-\(
+\[
   \langle
   \text{while } x \neq y \text{ do }
   (\text{if } x \leq y
     \text{ then } y := y-x
-    \text{ else } x:= x-y), s
+    \text{ else } x := x-y), s
   \rangle
-  \\
-  \quad \Rightarrow
+\]
+\[
+  (1) \Rightarrow
   \langle
   \text{while } x \neq y \text{ do }
   (\text{ if } x \leq y
     \text{ then } y := y-x
-    \text{ else } x:= x-y),
+    \text{ else } x := x-y),
     s[y \mapsto 12]
   \rangle
+\]
+\[
+  (2) \Rightarrow
+  \langle
+  \text{while } x \neq y \text{ do }
+  (\text{ if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y),
+    s[y \mapsto 12][x \mapsto 18]
+  \rangle
+\]
+\[
+  (3) \Rightarrow
+  \langle
+  \text{while } x \neq y \text{ do }
+  (\text{ if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y),
+    s[y \mapsto 12][x \mapsto 6]
+  \rangle
+\]
+\[
+  (4) \Rightarrow
+  \langle
+  \text{while } x \neq y \text{ do }
+  (\text{ if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y),
+    s[y \mapsto 6][x \mapsto 6]
+  \rangle
+\]
+\[
+  \Rightarrow
+  s[y \mapsto 6][x \mapsto 6]
+\]
+
+(1):
+
+\[
+\langle
+\text{while } x \neq y \text{ do }
+(\text{ if } x \leq y
+  \text{ then } y := y-x
+  \text{ else } x := x-y),
+  s
+\rangle
+\]
+\(
+  \Rightarrow
+  \text{ if } x \neq y
+  \text{ then } (
+    (\text{ if } x \leq y
+      \text{ then } y := y-x
+      \text{ else } x := x-y) 
+    );
+    \text{while } x \neq y \text{ do }
+    (\text{ if } x \leq y
+      \text{ then } y := y-x
+      \text{ else } x := x-y),
+  )
+  \text{ else skip }  ,s
 \)
-
-
 
 \end{document}

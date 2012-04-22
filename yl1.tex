@@ -63,7 +63,7 @@ Koduülesanded 1}
 \[
   T_2 = \frac{
     \cfrac{
-      \langle y := y-x, s_2 \rangle \rightarrow s_3
+      \langle x := x-y, s_2 \rangle \rightarrow s_3
     }{
       \langle 
         \text{if } x \leq y
@@ -87,7 +87,7 @@ Koduülesanded 1}
 \[
   T_3 = \frac{
     \cfrac{
-      \langle x := x-y, s_3 \rangle \rightarrow s_4
+      \langle y := y-x, s_3 \rangle \rightarrow s_4
     }{
       \langle
         \text{if } x \leq y
@@ -164,35 +164,403 @@ Koduülesanded 1}
   \rangle
 \]
 \[
-  \Rightarrow
+  (5) \Rightarrow
   s[y \mapsto 6][x \mapsto 6]
 \]
 
-(1):
-
-\[
-\langle
+\begin{align*}
+(1): 
+&\langle
 \text{while } x \neq y \text{ do }
 (\text{ if } x \leq y
   \text{ then } y := y-x
   \text{ else } x := x-y),
   s
 \rangle
-\]
-\(
+\Rightarrow
+\\
+\\
+&\langle
+\text{if } x \neq y
+\text{ then } (
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+  );
+  \text{ while } x \neq y \text{ do }\\
+  &(\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+)
+\text{ else skip},s
+\rangle
+\Rightarrow
+\\
+\\
+  &\frac{
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y
+    ,s
+    \rangle
+    \Rightarrow
+    \langle y := y-x,s \rangle
+  }
+  {
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y;
+    \text{ while } x \neq y \text{ do}
+    \\
+    &(\text{if } x \leq y
+      \text{ then } y := y-x
+      \text{ else } x := x-y),s
+    \rangle
+    \Rightarrow
+    \\
+    &\langle
+      y := y-x;
+      \text{ while } x \neq y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x := x-y),s
+    \rangle
+  }
+\Rightarrow
+\\
+\\
+&\frac{
+  \langle
+  y := y-x,s
+  \rangle
   \Rightarrow
-  \text{ if } x \neq y
-  \text{ then } (
-    (\text{ if } x \leq y
+  s[y \mapsto 12]
+}
+{
+  \langle y := y-x;
+  \text{ while } x \neq y \text{ do }
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y),s
+  \rangle
+  \Rightarrow
+  \\
+  &\langle
+  \text{while } x \neq y \text{ do }
+  \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+    ,s[y \mapsto 12]
+  \rangle
+}
+\end{align*}
+
+
+\begin{align*}
+(2): 
+&\langle
+\text{while } x \neq y \text{ do }
+(\text{ if } x \leq y
+  \text{ then } y := y-x
+  \text{ else } x := x-y)
+  ,s[y \mapsto 12]
+\rangle
+\Rightarrow
+\\
+\\
+&\langle
+\text{if } x \neq y
+\text{ then } (
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+  );
+  \text{ while } x \neq y \text{ do }\\
+  &(\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+)
+\text{ else skip},s[y \mapsto 12]
+\rangle
+\Rightarrow
+\\
+\\
+  &\frac{
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y
+    ,s[y \mapsto 12]
+    \rangle
+    \Rightarrow
+    \langle x := x-y,s[y \mapsto 12] \rangle
+  }
+  {
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y;
+    \text{ while } x \neq y \text{ do}
+    \\
+    &(\text{if } x \leq y
       \text{ then } y := y-x
-      \text{ else } x := x-y) 
-    );
-    \text{while } x \neq y \text{ do }
-    (\text{ if } x \leq y
+      \text{ else } x := x-y),s[y \mapsto 12]
+    \rangle
+    \Rightarrow
+    \\
+    &\langle
+      x := x-y;
+      \text{ while } x \neq y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x := x-y),s[y \mapsto 12]
+    \rangle
+  }
+\Rightarrow
+\\
+\\
+&\frac{
+  \langle
+  x := x-y,s[y \mapsto 12]
+  \rangle
+  \Rightarrow
+  s[y \mapsto 12][x \mapsto 18]
+}
+{
+  \langle x := x-y;
+  \text{ while } x \neq y \text{ do }
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y),s[y \mapsto 12]
+  \rangle
+  \Rightarrow
+  \\
+  &\langle
+  \text{while } x \neq y \text{ do }
+  \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+    ,s[y \mapsto 12][x \mapsto 18]
+  \rangle
+}
+\end{align*}
+
+
+\begin{align*}
+(3): 
+&\langle
+\text{while } x \neq y \text{ do }
+(\text{ if } x \leq y
+  \text{ then } y := y-x
+  \text{ else } x := x-y)
+  ,s[y \mapsto 12][x \mapsto 18]
+\rangle
+\Rightarrow
+\\
+\\
+&\langle
+\text{if } x \neq y
+\text{ then } (
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+  );
+  \text{ while } x \neq y \text{ do }\\
+  &(\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+)
+\text{ else skip},s[y \mapsto 12][x \mapsto 18]
+\rangle
+\Rightarrow
+\\
+\\
+  &\frac{
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y
+    ,s[y \mapsto 12][x \mapsto 18]
+    \rangle
+    \Rightarrow
+    \langle x := x-y,s[y \mapsto 12][x \mapsto 18] \rangle
+  }
+  {
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y;
+    \text{ while } x \neq y \text{ do}
+    \\
+    &(\text{if } x \leq y
       \text{ then } y := y-x
-      \text{ else } x := x-y),
-  )
-  \text{ else skip }  ,s
-\)
+      \text{ else } x := x-y),s[y \mapsto 12][x \mapsto 18]
+    \rangle
+    \Rightarrow
+    \\
+    &\langle
+      x := x-y;
+      \text{ while } x \neq y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x := x-y),s[y \mapsto 12][x \mapsto 18]
+    \rangle
+  }
+\Rightarrow
+\\
+\\
+&\frac{
+  \langle
+  x := x-y,s[y \mapsto 12][x \mapsto 18]
+  \rangle
+  \Rightarrow
+  s[y \mapsto 12][x \mapsto 6]
+}
+{
+  \langle x := x-y;
+  \text{ while } x \neq y \text{ do }
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y),s[y \mapsto 12][x \mapsto 18]
+  \rangle
+  \Rightarrow
+  \\
+  &\langle
+  \text{while } x \neq y \text{ do }
+  \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+    ,s[y \mapsto 12][x \mapsto 6]
+  \rangle
+}
+\end{align*}
+
+\begin{align*}
+(4): 
+&\langle
+\text{while } x \neq y \text{ do }
+(\text{ if } x \leq y
+  \text{ then } y := y-x
+  \text{ else } x := x-y)
+  ,s[y \mapsto 12][x \mapsto 6]
+\rangle
+\Rightarrow
+\\
+\\
+&\langle
+\text{if } x \neq y
+\text{ then } (
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+  );
+  \text{ while } x \neq y \text{ do }\\
+  &(\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+)
+\text{ else skip},s[y \mapsto 12][x \mapsto 6]
+\rangle
+\Rightarrow
+\\
+\\
+  &\frac{
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y
+    ,s[y \mapsto 12][x \mapsto 6]
+    \rangle
+    \Rightarrow
+    \langle y := y-x,s[y \mapsto 12][x \mapsto 6] \rangle
+  }
+  {
+    \langle
+    \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y;
+    \text{ while } x \neq y \text{ do}
+    \\
+    &(\text{if } x \leq y
+      \text{ then } y := y-x
+      \text{ else } x := x-y),s[y \mapsto 12][x \mapsto 6]
+    \rangle
+    \Rightarrow
+    \\
+    &\langle
+      y := y-x;
+      \text{ while } x \neq y \text{ do }
+      (\text{if } x \leq y
+        \text{ then } y := y-x
+        \text{ else } x := x-y),s[y \mapsto 12][x \mapsto 6]
+    \rangle
+  }
+\Rightarrow
+\\
+\\
+&\frac{
+  \langle
+  y := y-x,s[y \mapsto 12][x \mapsto 6]
+  \rangle
+  \Rightarrow
+  s[y \mapsto 6][x \mapsto 6]
+}
+{
+  \langle y := y-x;
+  \text{ while } x \neq y \text{ do }
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y),s[y \mapsto 12][x \mapsto 18]
+  \rangle
+  \Rightarrow
+  \\
+  &\langle
+  \text{while } x \neq y \text{ do }
+  \text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+    ,s[y \mapsto 6][x \mapsto 6]
+  \rangle
+}
+\end{align*}
+
+
+\begin{align*}
+(5): 
+&\langle
+\text{while } x \neq y \text{ do }
+(\text{ if } x \leq y
+  \text{ then } y := y-x
+  \text{ else } x := x-y)
+  ,s[y \mapsto 6][x \mapsto 6]
+\rangle
+\Rightarrow
+\\
+\\
+&\langle
+\text{if } x \neq y
+\text{ then } (
+  (\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+  );
+  \text{ while } x \neq y \text{ do }\\
+  &(\text{if } x \leq y
+    \text{ then } y := y-x
+    \text{ else } x := x-y)
+)
+\text{ else skip},s[y \mapsto 6][x \mapsto 6]
+\rangle
+\Rightarrow
+\\
+\\
+&\langle
+\text{skip},s[y \mapsto 6][x \mapsto 6]
+\rangle 
+\Rightarrow
+s[y \mapsto 6][x \mapsto 6]
+\end{align*}
 
 \end{document}

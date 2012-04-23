@@ -1,0 +1,49 @@
+\subsection{b}
+
+Kui b_1 = false \; ja \; b_2 = false \; ning \; b_1 = false \; ja \; b_2 = true:
+
+Siis 
+\[
+    \langle
+    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2)), s
+    \rangle \rightarrow s
+\]
+
+ning while-tsüklit ei täideta ning olek s ei muutu. Samuti juhtub ka teise avaldisega:
+
+
+\[
+    \langle
+    \text{while } b_1 \text{ do } (\text{if } b_2 \text{ then } S \text{ else }
+    (\text{while true do skip} , s
+    \rangle \rightarrow s
+\]
+
+
+Kui b_1 = true \; ja \; b_2 = false:
+
+Esimese poole tuletus:
+
+
+\[
+  \frac{
+    T_1
+    \quad
+    T_2
+  }{
+    \langle
+    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2)), s
+    \rangle \rightarrow s 
+  }
+\]
+
+
+Kus T_1 = \langle \text{ while } (b_1 \wedge b_2) \text{ do } S, s \rangle \rightarrow s 
+\\[1]
+ja 
+\\[1]
+T_2 = \langle \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2)), s \rangle \rightarrow s 
+ 
+\\[2]
+Kui b_1 = true \; ja \; b_2 = true
+

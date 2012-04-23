@@ -1,0 +1,166 @@
+\section{Ülesanne 2}
+
+\subsection{a}
+
+Kui b_1 = false \; ja \; b_2 = false \; ning \; b_1 = false \; ja \; b_2
+= true:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }
+  {
+    \langle \text{if } (b_1 \wedge b_2) \text{ then } S_1 \text{ else }
+    S_2, s \rangle \rightarrow s'
+  }
+\]
+
+Millest annab tuletada:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }{
+    \langle \text{if } b_1 \text{ then } (\text{if } b_2 \text{ then } S_1 \text{ else }
+    S_2)) \text{ else } S_2, s \rangle \rightarrow s'
+  }
+\]
+
+Teistpidi:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }{
+    \langle \text{if } b_1 \text{ then } (\text{if } b_2 \text{ then } S_1 \text{ else }
+    S_2)) \text{ else } S_2, s \rangle \rightarrow s'
+  }
+\]
+
+Millest annab samuti tuletada:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }
+  {
+    \langle \text{if } (b_1 \wedge b_2) \text{ then } S_1 \text{ else }
+    S_2, s \rangle \rightarrow s'
+  }
+\]
+
+
+Kui b_1 = true \; ja \; b_2 = false:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }
+  {
+    \langle \text{if } (b_1 \wedge b_2) \text{ then } S_1 \text{ else }
+    S_2, s \rangle \rightarrow s'
+  }
+\]
+
+Millest annab tuletada:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }{
+    \cfrac{
+      \langle \text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2), s \rangle \rightarrow s'
+    }{
+      \langle \text{if } b_1 \text{ then } (\text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2)) \text{ else } S_2, s \rangle \rightarrow s'
+    }
+  }
+\]
+
+Teistpidi:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }{
+    \cfrac{
+      \langle \text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2), s \rangle \rightarrow s'
+    }{
+      \langle \text{if } b_1 \text{ then } (\text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2)) \text{ else } S_2, s \rangle \rightarrow s'
+    }
+  }
+\]
+
+Millest annab samuti tuletada:
+
+\[
+  \frac{
+    \langle S_2, s \rangle \rightarrow s'
+  }
+  {
+    \langle \text{if } (b_1 \wedge b_2) \text{ then } S_1 \text{ else }
+    S_2, s \rangle \rightarrow s'
+  }
+\]
+
+
+Kui b_1 = true \; ja \; b_2 = true:
+
+\[
+  \frac{
+    \langle S_1, s \rangle \rightarrow s'
+  }
+  {
+    \langle \text{if } (b_1 \wedge b_2) \text{ then } S_1 \text{ else }
+    S_2, s \rangle \rightarrow s'
+  }
+\]
+
+Millest annab tuletada:
+
+\[
+  \frac{
+    \langle S_1, s \rangle \rightarrow s'
+  }{
+    \cfrac{
+      \langle \text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2), s \rangle \rightarrow s'
+    }{
+      \langle \text{if } b_1 \text{ then } (\text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2)) \text{ else } S_2, s \rangle \rightarrow s'
+    }
+  }
+\]
+
+Teistpidi:
+
+\[
+  \frac{
+    \langle S_1, s \rangle \rightarrow s'
+  }{
+    \cfrac{
+      \langle \text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2), s \rangle \rightarrow s'
+    }{
+      \langle \text{if } b_1 \text{ then } (\text{if } b_2 \text{ then } S_1 \text{ else }
+      S_2)) \text{ else } S_2, s \rangle \rightarrow s'
+    }
+  }
+\]
+
+Millest annab samuti tuletada:
+
+\[
+  \frac{
+    \langle S_1, s \rangle \rightarrow s'
+  }
+  {
+    \langle \text{if } (b_1 \wedge b_2) \text{ then } S_1 \text{ else }
+    S_2, s \rangle \rightarrow s'
+  }
+\]
+
+

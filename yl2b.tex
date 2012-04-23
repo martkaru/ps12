@@ -71,5 +71,56 @@ Kuna \(b_1 = true\), siis saab sellest ehitada teise avaldise tuletuspuu:
     \rangle \rightarrow s 
   \]
 
-\subsubsection{Kui b_1 = true \; ja \; b_2 = true}
+\subsubsection{Kui \(b_1 = true\) ja \(b_2 = true\)}
 
+\[
+  \frac{
+    \cfrac{
+      \langle
+      S, s
+      \rangle \rightarrow s'''
+      \quad
+      \langle
+      \text{while } (b_1 \wedge b_2) \text{ do } S, s'''
+      \rangle \rightarrow s'
+    }{
+      \langle
+      \text{while } (b_1 \wedge b_2) \text{ do } S, s
+      \rangle \rightarrow s'
+    }
+    \quad
+    \langle
+    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2) \text{ do } S), s'
+    \rangle \rightarrow s''
+  }{
+    \langle
+    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2) \text{ do } S), s
+    \rangle \rightarrow s''
+  }
+\] 
+
+
+\[
+  \frac{
+    \cfrac{
+      \langle
+      S, s
+      \rangle \rightarrow s'
+    }{
+      \langle
+      \text{if } b2 \text{ then } S \text{ else }
+      (\text{while true do skip})
+      ,s
+      \rangle
+      \rightarrow s'
+    }
+    \quad
+    T_1
+  }{
+    \langle
+    \text{while } b1 \text{ do } (\text{if } b2 \text{ then } S \text{ else }
+    (\text{while true do skip}))
+    ,s
+    \rangle \rightarrow s''
+  }
+\] 

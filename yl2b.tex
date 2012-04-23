@@ -1,29 +1,24 @@
 \subsection{b}
 
-Kui b_1 = false \; ja \; b_2 = false \; ning \; b_1 = false \; ja \; b_2 = true:
+\subsubsection{ Kui \(b_1 = false\) ja \(b_2 = false\) ning \(b_1 = false\) ja \(b_2 = true\), siis}
 
-Siis 
 \[
     \langle
-    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2)), s
+    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2) \text{ do } S), s
     \rangle \rightarrow s
 \]
 
-ning while-tsüklit ei täideta ning olek s ei muutu. Samuti juhtub ka teise avaldisega:
-
+While-tsükli keha ei täideta ning olek s ei muutu. Sama juhtub ka teise avaldisega:
 
 \[
     \langle
     \text{while } b_1 \text{ do } (\text{if } b_2 \text{ then } S \text{ else }
-    (\text{while true do skip} , s
+    (\text{while true do skip})) , s
     \rangle \rightarrow s
 \]
 
 
-Kui b_1 = true \; ja \; b_2 = false:
-
-Esimese poole tuletus:
-
+\subsubsection{Kui \(b_1 = true\) ja \(b_2 = false\)}
 
 \[
   \frac{
@@ -32,18 +27,49 @@ Esimese poole tuletus:
     T_2
   }{
     \langle
-    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2)), s
+    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2) \text{ do } S), s
     \rangle \rightarrow s 
   }
-\]
+\] 
+\[T_1 = \langle \text{while } (b_1 \wedge b_2) \text{ do } S, s \rangle \rightarrow s\]
+\[T_2 = \langle \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2)), s \rangle \rightarrow s\]
+
+Kuna \(T_1\) tsükli keha ei läbita, jääb olek s muutmata ning \(T_1\) saab võrdsustada
+oma lõpptulemuse osas käsuga skip. Samuti võib sisuliselt \(T_2\) asendada lausega:
+
+\[T_2 = \langle \text{while } b_1 \text{ do } \text{skip}), s \rangle \rightarrow s\]
+
+Kuna \(b_1 = true\), siis saab sellest ehitada teise avaldise tuletuspuu:
 
 
-Kus T_1 = \langle \text{ while } (b_1 \wedge b_2) \text{ do } S, s \rangle \rightarrow s 
-\\[1]
-ja 
-\\[1]
-T_2 = \langle \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2)), s \rangle \rightarrow s 
- 
-\\[2]
-Kui b_1 = true \; ja \; b_2 = true
+\[
+  \frac{
+    \cfrac{
+      \langle \text{while true do skip}, s \rangle
+    }{
+      \langle \text{if } b2 \text{ then } S \text{ else } (\text{while true do
+      skip}))
+      ,s
+      \rangle
+    }
+    \quad
+    T_3
+  }{
+    \langle
+    \text{while } b1 \text{ do } (\text{if } b2 \text{ then } S \text{ else }
+    (\text{while true do skip}))
+    ,s
+    \rangle \rightarrow s 
+  }
+\] 
+
+\[T_3 = 
+    \langle
+    \text{while } b1 \text{ do } (\text{if } b2 \text{ then } S \text{ else }
+    (\text{while true do skip}))
+    ,s
+    \rangle \rightarrow s 
+  \]
+
+\subsubsection{Kui b_1 = true \; ja \; b_2 = true}
 

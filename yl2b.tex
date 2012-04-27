@@ -73,62 +73,83 @@ Kuna \(b_1 = true\), siis saab sellest ehitada teise avaldise tuletuspuu:
 
 \subsubsection{Kui \(b_1 = true\) ja \(b_2 = true\)}
 
+Esimene avaldis:
+
 \[
   \frac{
     \cfrac{
-      \langle
-      S, s
-      \rangle \rightarrow s'''
+      \cfrac{
+        T_1
+      }{
+        \langle
+        S, s
+        \rangle \rightarrow s_1
+      }
       \quad
-      \langle
-      \text{while } (b_1 \wedge b_2) \text{ do } S, s'''
-      \rangle \rightarrow s'
+      \cfrac{
+        T_2
+      }{
+        \langle
+        \text{while } (b_1 \wedge b_2) \text{ do } S, s_1
+        \rangle \rightarrow s_2
+      }
     }{
       \langle
       \text{while } (b_1 \wedge b_2) \text{ do } S, s
-      \rangle \rightarrow s'
+      \rangle \rightarrow s_2
     }
     \quad
     \langle
-    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2) \text{ do } S), s'
-    \rangle \rightarrow s''
+    \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2) \text{ do } S), s_2
+    \rangle \rightarrow s'
   }{
     \langle
     \text{while } b_1 \text{ do } (\text{while } (b_1 \wedge b_2) \text{ do } S), s
-    \rangle \rightarrow s''
+    \rangle \rightarrow s'
   }
 \] 
 
+Kasutades tuletuspuid \(T_1\) ja \(T_2\) ja eeldades, et \((b_1 \wedge b_2)\)
+asemel saab kasutada while tingimuseks ainult \(b_1\) saab ehitada teise avaldise:
 
 \[
+\frac{
   \frac{
     \cfrac{
-      \langle
-      S, s
-      \rangle \rightarrow s'
+      T_1
     }{
       \langle
-      \text{if } b2 \text{ then } S \text{ else }
-      (\text{while true do skip})
-      ,s
-      \rangle
-      \rightarrow s'
+      S, s
+      \rangle \rightarrow s_1
     }
-    \quad
-    T_1
+  }{
+    \langle
+    \text{if } b2 \text{ then } S \text{ else }
+    (\text{while true do skip})
+    ,s
+    \rangle \rightarrow s_1
+  }
+  \quad
+  \frac{
+    \cfrac{
+      T_2
+    }{
+      \langle
+      \text{while } b_1 \text{ do } S, s_1
+      \rangle \rightarrow s_2
+    }
   }{
     \langle
     \text{while } b1 \text{ do } (\text{if } b2 \text{ then } S \text{ else }
     (\text{while true do skip}))
-    ,s
-    \rangle \rightarrow s''
+    ,s_1
+    \rangle \rightarrow s_2
   }
-\] 
-
-\(T_1 = 
+}{
   \langle
   \text{while } b1 \text{ do } (\text{if } b2 \text{ then } S \text{ else }
   (\text{while true do skip}))
-  ,s'
-  \rangle \rightarrow s''
-\)
+  ,s
+  \rangle \rightarrow s'
+}
+\]

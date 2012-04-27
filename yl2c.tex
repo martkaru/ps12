@@ -1,0 +1,47 @@
+\subsection{c}
+
+Esimene avaldis:
+
+\[
+  \frac{
+    \cfrac{
+      s[x \mapsto A \llbracket a_1 \rrbracket s] = s'
+    }
+    {
+      \langle x := a_1, s \rangle \rightarrow s'
+    }
+    \quad
+    \cfrac{
+      s'[y \mapsto A \llbracket a_2 \rrbracket s'] = s''
+    }
+    {
+      \langle y := a_2, s' \rangle \rightarrow s''
+    }
+  }{
+    \langle x := a_1; y := a_2, s \rangle \rightarrow s''
+  }
+\]
+
+Esimese avaldise tuletuspuust saab koostada teise avaldise. Oleku uuendamisel
+tehtud omistuste järjekorda võib muuta, sest \(x\) ei leia kasutamist avaldises \(a_2\)
+ning \(y\) ei leia kasutamist avaldises \(a_1\)
+
+\[
+  \frac{
+    \cfrac{
+      s[y \mapsto A \llbracket a_2 \rrbracket s] = s'
+    }
+    {
+      \langle y := a_2, s \rangle \rightarrow s'
+    }
+    \quad
+    \cfrac{
+      s'[x \mapsto A \llbracket a_1 \rrbracket s'] = s''
+    }
+    {
+      \langle x := a_1, s' \rangle \rightarrow s''
+    }
+  }{
+    \langle y := a_2; x := a_1, s \rangle \rightarrow s''
+  }
+\]

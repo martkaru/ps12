@@ -1,0 +1,21 @@
+\section{Ülesanne 3}
+\subsection{Osa 1 - \(b?a_0:a_1\)}
+
+Aritmeetikaavaldise \(b?a_0:a_1\) toetamiseks on tarvis lisada järgmised reeglid:
+
+\(
+\cfrac
+  {\langle a_0,s \rangle \rightarrow \textit{Aexp} \; z}
+  {\langle b?a_0:a_1,s \rangle  \rightarrow \textit{Aexp} \; z}
+  \;
+  \text{if} \; B\llbracket b \rrbracket &=& \textb{tt}
+\)
+
+ja
+
+\cfrac
+  {\langle a_1,s \rangle \rightarrow \textit{Aexp} \; z}
+  {\langle b?a_0:a_1,s \rangle  \rightarrow \textit{Aexp} \; z}
+  \;
+  \text{if} \; B\llbracket b \rrbracket &=& \textb{ff}
+\)

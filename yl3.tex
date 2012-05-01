@@ -20,3 +20,21 @@ ja
   \;
   \text{if} \; B\llbracket b \rrbracket &=& \textb{ff}
 \)
+
+\subsection{Osa 2 - \(S \triangleright a \)}
+
+Aritmeetikaavaldise \(S \triangleright a \) toetamiseks tuleb kõigepealt
+käivitada statemnt \(S\) etteantud olekuga \(s\), mille tulemusena tekib olek
+\(s'\).  Olekut \(s'\) kasutatakse aritmeetikaavaldise \(a\) rehkendamises, mis
+väljastab arvu \(z\). Olek ei kandu edasi, mistõttu on \(S\) käskude mõju
+globaalsele olekule mittemõjuv.
+
+\vspace*{8}
+
+\(
+\cfrac
+  {\langle S,s \rangle \rightarrow s', \quad \langle a, s' \rangle \rightarrow  \textit{Aexp} \; z}
+  {\langle S \triangleright a,s \rangle  \rightarrow \textit{Aexp} \; z}
+\)
+
+

@@ -8,7 +8,7 @@ Aritmeetikaavaldise \(b?a_0:a_1\) toetamiseks on tarvis lisada järgmised reegli
   {\langle a_0,s \rangle \rightarrow \textit{Aexp} \; z}
   {\langle b?a_0:a_1,s \rangle  \rightarrow \textit{Aexp} \; z}
   \;
-  \text{if} \; B\llbracket b \rrbracket &=& \textb{tt}
+  \text{if}  B\llbracket b \rrbracket = \text{tt}
 \)
 
 ja
@@ -18,7 +18,7 @@ ja
   {\langle a_1,s \rangle \rightarrow \textit{Aexp} \; z}
   {\langle b?a_0:a_1,s \rangle  \rightarrow \textit{Aexp} \; z}
   \;
-  \text{if} \; B\llbracket b \rrbracket &=& \textb{ff}
+  \text{if} \; B\llbracket b \rrbracket = \text{ff}
 \)
 
 \subsection{Osa 2 - \(S \triangleright a \)}
@@ -29,7 +29,7 @@ käivitada statemnt \(S\) etteantud olekuga \(s\), mille tulemusena tekib olek
 väljastab arvu \(z\). Olek ei kandu edasi, mistõttu on \(S\) käskude mõju
 globaalsele olekule mittemõjuv.
 
-\vspace*{8}
+\vspace*{8pt}
 
 \(
 \cfrac

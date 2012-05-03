@@ -1,0 +1,170 @@
+\section{Ülesanne 4}
+
+Nelikul \(\langle a, s \rangle \rightarrow _\mathrm{Aexp} \langle z,s' \rangle\) põhineva
+keele loomuliku semantika reeglid on:
+
+\subsection{Aritmeetikaavaldised}
+\[
+\langle n, s \rangle \rightarrow _\mathrm{Aexp} \langle N \llbracket n \rrbracket, s \rangle
+\]
+
+\[
+\langle x, s \rangle \rightarrow _\mathrm{Aexp} \langle s \  x, s \rangle
+\]
+
+\[
+\langle x := a, s \rangle
+\rightarrow _\mathrm{Aexp}
+\langle z, s'[x \mapsto z] \rangle
+\]
+
+\(z\) on avaldise \(a\) arvutamisel saadud tulemus ning s' on avaldise \(a\)
+arvutamisel tekkinud olek.
+
+\[
+  \cfrac{
+    \langle a_0, s \rangle \rightarrow _\mathrm{Aexp} \langle z_0, s' \rangle
+    , 
+    \langle a_1, s' \rangle \rightarrow _\mathrm{Aexp} \langle z_1, s'' \rangle
+  }{
+    \langle a_0 + a_1, s \rangle \rightarrow _\mathrm{Aexp} \langle z, s'' \rangle
+  }\text{,\ kus\ } z = z_0 + z_1
+\]
+
+\[
+  \cfrac{
+    \langle a_0, s \rangle \rightarrow _\mathrm{Aexp} \langle z_0, s' \rangle
+    , 
+    \langle a_1, s' \rangle \rightarrow _\mathrm{Aexp} \langle z_1, s'' \rangle
+  }{
+    \langle a_0 - a_1, s \rangle \rightarrow _\mathrm{Aexp} \langle z, s'' \rangle
+  }\text{,\ kus\ } z = z_0 - z_1
+\]
+
+\[
+  \cfrac{
+    \langle a_0, s \rangle \rightarrow _\mathrm{Aexp} \langle z_0, s' \rangle
+    , 
+    \langle a_1, s' \rangle \rightarrow _\mathrm{Aexp} \langle z_1, s'' \rangle
+  }{
+    \langle a_0 * a_1, s \rangle \rightarrow _\mathrm{Aexp} \langle z, s'' \rangle
+  }\text{,\ kus\ } z = z_0 * z_1
+\]
+
+\subsection{Loogikaavaldised}
+\[
+\langle true, s \rangle \rightarrow _\mathrm{Bexp} \langle tt, s \rangle
+\]
+\[
+\langle false, s \rangle \rightarrow _\mathrm{Bexp} \langle ff, s \rangle
+\]
+\[
+  \cfrac{
+    \langle a_0, s \rangle \rightarrow _\mathrm{Aexp} \langle z_0, s' \rangle
+    , 
+    \langle a_1, s' \rangle \rightarrow _\mathrm{Aexp} \langle z_1, s'' \rangle
+  }{
+    \langle a_0 = a_1, s \rangle \rightarrow _\mathrm{Bexp} \langle ff, s'' \rangle
+  }
+  \text{,\ if\ } z_0 \neq  z_1
+\]
+\[
+  \cfrac{
+    \langle a_0, s \rangle \rightarrow _\mathrm{Aexp} \langle z_0, s' \rangle
+    , 
+    \langle a_1, s' \rangle \rightarrow _\mathrm{Aexp} \langle z_1, s'' \rangle
+  }{
+    \langle a_0 = a_1, s \rangle \rightarrow _\mathrm{Bexp} \langle tt, s'' \rangle
+  }
+  \text{,\ if\ } z_0 =  z_1
+\]
+\[
+  \cfrac{
+    \langle a_0, s \rangle \rightarrow _\mathrm{Aexp} \langle z_0, s' \rangle
+    , 
+    \langle a_1, s' \rangle \rightarrow _\mathrm{Aexp} \langle z_1, s'' \rangle
+  }{
+    \langle a_0 \leq a_1, s \rangle \rightarrow _\mathrm{Bexp} \langle tt, s'' \rangle
+  }
+  \text{,\ if\ } z_0 \leq z_1
+\]
+\[
+  \cfrac{
+    \langle a_0, s \rangle \rightarrow _\mathrm{Aexp} \langle z_0, s' \rangle
+    , 
+    \langle a_1, s' \rangle \rightarrow _\mathrm{Aexp} \langle z_1, s'' \rangle
+  }{
+    \langle a_0 > a_1, s \rangle \rightarrow _\mathrm{Bexp} \langle ff, s'' \rangle
+  }
+  \text{\, if\ } z_0 > z_1
+\]
+\[
+  \langle \neg b, s \rangle \rightarrow _\mathrm{Bexp} \langle tt, s' \rangle
+  \quad
+  \text{if\ } bv = ff
+\]
+\[
+  \langle \neg b, s \rangle \rightarrow _\mathrm{Bexp} \langle ff, s' \rangle
+  \quad
+  \text{if\ } bv = tt
+\]
+  \(bv\) on loogikaavaldise \(b\) arvutamise tulemus ja \(s'\) loogikaavalise
+  arvutamisel muutunud olek
+\[
+  \cfrac{
+    \langle b_0, s \rangle \rightarrow _\mathrm{Bexp} \langle bv_0, s' \rangle
+    , 
+    \langle b_1, s' \rangle \rightarrow _\mathrm{Bexp} \langle bv_1, s'' \rangle
+  }{
+    \langle b_0 \wedge  b_1, s \rangle \rightarrow _\mathrm{Bexp} \langle bv, s'' \rangle
+  }
+  \text{,\ kus\ } bv = bv_0 \text{\ and\ } bv_1
+\]
+  \(bv_0\) ja \(bv_1\) on loogikaavaldiste \(b_0\) ja \(b_1\) arvutamise tulemused.
+
+\subsection{Käsud}
+\[
+  \cfrac{
+    \langle a, s \rangle \rightarrow _\mathrm{Aexp} \langle z, s' \rangle
+  }{
+    \langle x:=a, s \rangle \rightarrow s'[x \mapsto z]
+  }
+  \text{,\ kus\ } z \text{\ on\ avaldise\ } a \text{\ arvutamise\ tulemus}
+\]
+
+\[
+  \cfrac{
+    \langle b, s \rangle \rightarrow _\mathrm{Bexp} \langle bv, s' \rangle
+    \quad
+    \langle S_1, s' \rangle \rightarrow s''
+  }{
+    \langle \text{if\ } b \text{\ then\ } S_1 \text{\ else\ } S_2, s \rangle \rightarrow s''
+  }, \text{\ if\ } bv = tt \text{\ ja\ } bv \text{\ arvutatakse avaldisest\ } b
+\]
+\[
+  \cfrac{
+    \langle b, s \rangle \rightarrow _\mathrm{Bexp} \langle bv, s' \rangle
+    \quad
+    \langle S_2, s' \rangle \rightarrow s''
+  }{
+    \langle \text{if\ } b \text{\ then\ } S_1 \text{\ else\ } S_2, s \rangle \rightarrow s''
+  }, \text{\ if\ } bv = ff \text{\ ja\ } bv \text{\ arvutatakse avaldisest\ } b
+\]
+\[
+  \cfrac{
+    \langle b, s \rangle \rightarrow _\mathrm{Bexp} \langle bv, s' \rangle
+    \quad
+    \langle S, s' \rangle \rightarrow s''
+    \quad
+    \langle \text{while\ } b \text{\ do\ } S, s'' \rangle \rightarrow s'''
+  }{
+    \langle \text{while\ } b \text{\ do\ } S, s \rangle \rightarrow s'''
+  }, \text{\ if\ } bv = tt \text{\ ja\ } bv \text{\ arvutatakse avaldisest\ } b
+\]
+\[
+  \cfrac{
+    \langle b, s \rangle \rightarrow _\mathrm{Bexp} \langle bv, s' \rangle
+  }{
+    \langle \text{while\ } b \text{\ do\ } S, s \rangle \rightarrow s'
+  }, \text{\ if\ } bv = ff \text{\ ja\ } bv \text{\ arvutatakse avaldisest\ } b
+\]

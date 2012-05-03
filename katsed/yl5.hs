@@ -44,19 +44,38 @@ bexp (Not b) s = not (bexp b s)
 bexp (a0 :&& a1) s = bexp a0 s && bexp a1 s
 bexp (a0 :|| a1) s = bexp a0 s || bexp a1 s
 
-stmt :: Stmt -> State -> State
-stmt Skip s = s
-stmt (stm0 :\ stm1) s = s' where
-                          s'' = stmt stm0 s
-                          s'  = stmt stm1 s''
-stmt (x := a) s = upd x z s where
+type CounterState = (Integer, State)
+
+countOf :: CounterState -> Integer
+countOf (n, s) = n
+stateOf :: CounterState -> State
+stateOf (n, s) = s
+
+stmt :: Stmt -> State -> CounterState
+stmt Skip s = (1, s)
+stmt (stm0 :\ stm1) s = (n' + n'' + 1, s'') where
+                          first = stmt stm0 s
+                          s'    = stateOf first
+                          n'    = countOf first
+                          last  = stmt stm1 s'
+                          s''   = stateOf last
+                          n''   = countOf last
+stmt (x := a) s = (1, upd x z s) where
                           z = aexp a s
 stmt (If b stm0 stm1) s =
     if bexp b s then
-      stmt stm0 s
-    else stmt stm1 s
+      let result = stmt stm0 s
+      in (countOf(result) + 1, stateOf result)
+    else 
+      let result = stmt stm1 s
+      in (countOf(result) + 1, stateOf result)
+
 stmt (While b stm0) s =
     if bexp b s then 
-      stmt (While b stm0) (stmt stm0 s)
-    else s
+      let result  = stmt stm0 s
+          s'      = stateOf result
+          result' = stmt (While b stm0) s'
+      in (countOf(result) + countOf(result') + 1, stateOf(result'))
+    else (1, s)
+
 

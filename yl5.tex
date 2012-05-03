@@ -2,4 +2,70 @@
 
 \subsection{\textit{reset} - käsuta variatsioon loendamisest}
 
+\[
+\langle x:=a,s \rangle \rightarrow
+\langle 1, s[x \mapsto A \llbracket a \rrbracket s] \rangle
+\]
+
+\[
+\langle skip,s \rangle \rightarrow
+\langle 1, s \rangle
+\]
+
+\[
+\cfrac{
+  \langle S_1,s \rangle \rightarrow
+  \langle n,s' \rangle
+  \quad
+  \langle S_2,s' \rangle \rightarrow
+  \langle n',s'' \rangle
+}{
+  \langle S_1;S_2,s \rangle \rightarrow
+  \langle n + n' + 1, s'' \rangle
+}
+\]
+
+\[
+\cfrac{
+  \langle S_1,s \rangle \rightarrow
+  \langle n,s' \rangle
+}{
+  \langle \text{if\ } b \text{\ then\ } S_1 \text{\ else\ } S_2,s \rangle
+  \rightarrow
+  \langle n + 1, s' \rangle
+}\text{,\ if } B \llbracket b \rrbracket s = tt
+\]
+
+\[
+\cfrac{
+  \langle S_2,s \rangle \rightarrow
+  \langle n,s' \rangle
+}{
+  \langle \text{if\ } b \text{\ then\ } S_1 \text{\ else\ } S_2,s \rangle
+  \rightarrow
+  \langle n + 1, s' \rangle
+}\text{,\ if } B \llbracket b \rrbracket s = ff
+\]
+
+\[
+\cfrac{
+  \langle S,s \rangle \rightarrow
+  \langle n,s' \rangle
+  \quad
+  \langle \text{while\ } b \text{\ do\ } S,s' \rangle
+  \rightarrow
+  \langle n', s'' \rangle
+}{
+  \langle \text{while\ } b \text{\ do\ } S,s \rangle
+  \rightarrow
+  \langle n + n' + 1, s'' \rangle
+}\text{,\ if } B \llbracket b \rrbracket s = tt
+\]
+
+\[
+\langle \text{while\ } b \text{\ do\ } S,s \rangle
+\rightarrow
+\langle 1, s \rangle
+\text{,\ if } B \llbracket b \rrbracket s = ff
+\]
 

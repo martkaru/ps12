@@ -53,7 +53,7 @@ stateOf (n, s) = s
 
 stmt :: Stmt -> State -> CounterState
 stmt Skip s = (1, s)
-stmt (stm0 :\ stm1) s = (n' + n'' + 1, s'') where
+stmt (stm0 :\ stm1) s = (n' + n'', s'') where
                           first = stmt stm0 s
                           s'    = stateOf first
                           n'    = countOf first

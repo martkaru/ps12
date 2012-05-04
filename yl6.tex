@@ -1,0 +1,84 @@
+\section{Ülesanne 6}
+
+1. Mõlemad käsud ei lõpeta (tehakse kaks sammu esimesest ja üks teisest,
+ning tulemuseks on mõlema puhul järgnevad sammud):
+
+\[
+  \frac{
+    \langle S_1, s \rangle \Rightarrow \langle S_1', s' \rangle
+    ,
+    \langle S_1', s' \rangle \Rightarrow \langle S_1'', s'' \rangle
+    ,
+    \langle S_2, s'' \rangle \Rightarrow \langle S_2', s''' \rangle
+  }{
+    \langle S_1 \text{\ par\ } S_2, s \rangle \Rightarrow
+    \langle S_1'' \text{\ par\ } S_2', s''' \rangle
+  }
+\]
+
+
+2. Esimene käsk jõuab lõppu teise sammu järel, jätkakse teise käsuga:
+\[
+  \frac{
+    \langle S_1, s \rangle \Rightarrow \langle S_1', s' \rangle
+    ,
+    \langle S_1', s' \rangle \Rightarrow s''
+    ,
+    \langle S_2, s'' \rangle \Rightarrow \langle S_2', s''' \rangle
+  }{
+    \langle S_1 \text{\ par\ } S_2, s \rangle \Rightarrow
+    \langle S_2', s''' \rangle
+  }
+\]
+
+3. Esimene käsk jõuab lõppu esimese sammu järel, jätkakse teise käsuga:
+\[
+  \frac{
+    \langle S_1, s \rangle \Rightarrow s'
+    ,
+    \langle S_2, s' \rangle \Rightarrow \langle S_2', s'' \rangle
+  }{
+    \langle S_1 \text{\ par\ } S_2, s \rangle \Rightarrow
+    \langle S_2', s'' \rangle
+  }
+\]
+
+4. Teine käsk lõpetab, esimene kestab edasi:
+\[
+  \frac{
+    \langle S_1, s \rangle \Rightarrow \langle S_1', s' \rangle
+    ,
+    \langle S_1', s' \rangle \Rightarrow \langle S_1'', s'' \rangle
+    ,
+    \langle S_2, s'' \rangle \Rightarrow s'''
+  }{
+    \langle S_1 \text{\ par\ } S_2, s \rangle \Rightarrow
+    \langle S_1'', s''' \rangle
+  }
+\]
+
+5. Esimene käsk jõuab lõppu teise sammu järel, lõppu jõuab ka teine käsk:
+\[
+  \frac{
+    \langle S_1, s \rangle \Rightarrow \langle S_1', s' \rangle
+    ,
+    \langle S_1', s' \rangle \Rightarrow s''
+    ,
+    \langle S_2, s'' \rangle \Rightarrow s'''
+  }{
+    \langle S_1 \text{\ par\ } S_2, s \rangle \Rightarrow
+    s'''
+  }
+\]
+
+5. Esimene käsk jõuab lõppu teise sammu järel, lõppu jõuab ka teine käsk:
+\[
+  \frac{
+    \langle S_1, s \rangle \Rightarrow \langle S_1', s' \rangle
+    ,
+    \langle S_2, s' \rangle \Rightarrow s''
+  }{
+    \langle S_1 \text{\ par\ } S_2, s \rangle \Rightarrow
+    s''
+  }
+\]

@@ -3,24 +3,23 @@
 
 \[
   \frac{
-    \cfrac{
-      \langle y := y-x, s_0 \rangle \rightarrow s_1
-    }{
-      \langle
-        \text{if } x \leq y
-          \text{ then } y := y-x
-          \text{ else } x := x-y
-        , s_0
-      \rangle \rightarrow s_1
-    }
-    \quad
-    T_1
+    \cfrac
+      {\langle y := y-x, s_0 \rangle \rightarrow s_1}
+      {\langle
+       \text{if\ } x \leq y
+         \text{\ then\ } y := y-x
+         \text{\ else\ } x := x-y
+        ,s_0
+        \rangle \rightarrow s_1
+      }
+      \quad
+      T_1
   }{
-    \langle 
-    \text{while } x \neq  y \text{ do }
-      (\text{if } x \leq y
-        \text{ then } y := y-x
-        \text{ else } x := x-y)
+    \langle
+    \text{while\ } x \neq  y \text{\ do\ }
+      (\text{if\ } x \leq y
+        \text{\ then\ } y := y-x
+        \text{\ else\ } x := x-y)
       , s_0
     \rangle \rightarrow s_4
   }
@@ -28,24 +27,23 @@
 
 \[
   T_1 = \frac{
-    \cfrac{
-      \langle x := x-y, s_1 \rangle \rightarrow s_2
-    }{
-      \langle 
-        \text{if } x \leq y
-          \text{ then } y := y-x
-          \text{ else } x:= x-y
-        , s_1
-      \rangle \rightarrow s_2
+    \cfrac
+    {\langle x := x-y, s_1 \rangle \rightarrow s_2 }
+    {\langle
+     \text{if\ } x \leq y
+       \text{\ then\ } y := y-x
+       \text{\ else\ } x:= x-y
+     , s_1
+     \rangle \rightarrow s_2
     }
     \quad
     T_2
   }{
-    \langle 
-    \text{while } x \neq y \text{ do }
-      (\text{if } x \leq y
-        \text{ then } y := y-x
-        \text{ else } x:= x-y)
+    \langle
+    \text{while\ } x \neq y \text{\ do\ }
+      (\text{if\ } x \leq y
+        \text{\ then\ } y := y-x
+        \text{\ else\ } x:= x-y)
       , s_1
     \rangle \rightarrow s_4
   }
@@ -53,13 +51,12 @@
 
 \[
   T_2 = \frac{
-    \cfrac{
-      \langle x := x-y, s_2 \rangle \rightarrow s_3
-    }{
-      \langle 
-        \text{if } x \leq y
-          \text{ then } y := y-x
-          \text{ else } x := x-y
+    \cfrac
+    {\langle x := x-y, s_2 \rangle \rightarrow s_3
+    }{\langle 
+        \text{if\ } x \leq y
+          \text{\ then\ } y := y-x
+          \text{\ else\ } x := x-y
         , s_2
       \rangle \rightarrow s_3
     }
@@ -67,32 +64,31 @@
     T_3
   }{
     \langle 
-    \text{while} x \neq  y \text{ do }
-      (\text{if } x \leq y
-        \text{ then } y := y-x
-        \text{ else } x := x-y)
+    \text{while\ } x \neq  y \text{\ do\ }
+      (\text{if\  } x \leq y
+        \text{\  then\  } y := y-x
+        \text{\  else\  } x := x-y)
       , s_2
     \rangle \rightarrow s_4
   }
 \]
 \[
   T_3 = \frac{
-    \cfrac{
-      \langle y := y-x, s_3 \rangle \rightarrow s_4
-    }{
-      \langle
-        \text{if } x \leq y
-          \text{ then } y := y-x
-          \text{ else } x := x-y
-        , s_3
+    \cfrac
+    {\langle y := y-x, s_3 \rangle \rightarrow s_4
+    }{\langle
+      \text{if\ } x \leq y
+        \text{\ then\ } y := y-x
+        \text{\ else\ } x := x-y
+      , s_3
       \rangle \rightarrow s_4
     }
   }{
     \langle
-    \text{while } x \neq y \text{ do }
-      (\text{if } x \leq y
-        \text{ then } y := y-x
-        \text{ else } x := x-y )
+    \text{while\ } x \neq y \text{\ do\ }
+      (\text{if\ } x \leq y
+        \text{\ then\ } y := y-x
+        \text{\ else\ } x := x-y )
       , s_1
     \rangle \rightarrow s_4
   }
@@ -104,7 +100,7 @@
 \[s_3 = [x \mapsto 6, y \mapsto 12]\]
 \[s_4 = [x \mapsto 6, y \mapsto 6]\]
 
-\subsection{Struktuurses operatsioonisemantikas}
+\subsection{struktuurses operatsioonisemantikas}
 
 \[
   \langle
@@ -114,43 +110,45 @@
     \text{\ else\ } x := x-y), s
   \rangle
 \]
+
 \[
   (1) \Rightarrow
   \langle
-  \text{while } x \neq y \text{ do }
-  (\text{ if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y),
+  \text{while\ } x \neq y \text{\ do\ }
+  (\text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y),
     s[y \mapsto 12]
   \rangle
 \]
+
 \[
   (2) \Rightarrow
   \langle
-  \text{while } x \neq y \text{ do }
-  (\text{ if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y),
+  \text{while\ } x \neq y \text{\ do\ }
+  (\text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y),
     s[y \mapsto 12][x \mapsto 18]
   \rangle
 \]
 \[
   (3) \Rightarrow
   \langle
-  \text{while } x \neq y \text{ do }
-  (\text{ if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y),
+  \text{while\ } x \neq y \text{\ do\ }
+  (\text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y),
     s[y \mapsto 12][x \mapsto 6]
   \rangle
 \]
 \[
   (4) \Rightarrow
   \langle
-  \text{while } x \neq y \text{ do }
-  (\text{ if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y),
+  \text{while\ } x \neq y \text{\ do\ }
+  (\text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y),
     s[y \mapsto 6][x \mapsto 6]
   \rangle
 \]
@@ -161,88 +159,83 @@
 
 \begin{align*}
 (1): 
-&\langle
-\text{while } x \neq y \text{ do }
-(\text{ if } x \leq y
-  \text{ then } y := y-x
-  \text{ else } x := x-y),
+&\langle \text{while\ } x \neq y \text{\ do\ }
+(\text{if\ } x \leq y
+  \text{\ then\ } y := y-x
+  \text{\ else\ } x := x-y),
   s
 \rangle
 \Rightarrow
 \\
 \\
 &\langle
-\text{if } x \neq y
-\text{ then } (
-  (\text{if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y)
+\text{if\ } x \neq y
+\text{\ then\ } (
+  (\text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y)
   );
-  \text{ while } x \neq y \text{ do }\\
-  &(\text{if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y)
+  \text{\ while\ } x \neq y \text{\ do\ }\\
+  &(\text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y)
 )
-\text{ else skip},s
+\text{\ else\ skip},s
 \rangle
 \Rightarrow
 \\
 \\
-  &\frac{
-    \langle
-    \text{if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y
+  &\frac{\langle
+    \text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y
     ,s
     \rangle
     \Rightarrow
     \langle y := y-x,s \rangle
   }
-  {
-    \langle
-    \text{if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y;
-    \text{ while } x \neq y \text{ do}
+  {\langle
+    \text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y;
+    \text{\ while\ } x \neq y \text{\ do}
     \\
-    &(\text{if } x \leq y
-      \text{ then } y := y-x
-      \text{ else } x := x-y),s
+    &(\text{if\ } x \leq y
+      \text{\ then\ } y := y-x
+      \text{\ else\ } x := x-y),s
     \rangle
     \Rightarrow
     \\
     &\langle
       y := y-x;
-      \text{ while } x \neq y \text{ do }
-      (\text{if } x \leq y
-        \text{ then } y := y-x
-        \text{ else } x := x-y),s
+      \text{\ while\ } x \neq y \text{\ do\ }
+      (\text{if\ } x \leq y
+        \text{\ then\ } y := y-x
+        \text{\ else\ } x := x-y),s
     \rangle
   }
 \Rightarrow
 \\
 \\
-&\frac{
-  \langle
+&\frac{\langle
   y := y-x,s
   \rangle
   \Rightarrow
   s[y \mapsto 12]
 }
-{
-  \langle y := y-x;
-  \text{ while } x \neq y \text{ do }
-  (\text{if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y),s
+{\langle y := y-x;
+  \text{\ while\ } x \neq y \text{\ do\ }
+  (\text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y),s
   \rangle
   \Rightarrow
   \\
   &\langle
-  \text{while } x \neq y \text{ do }
-  \text{if } x \leq y
-    \text{ then } y := y-x
-    \text{ else } x := x-y)
+  \text{while\ } x \neq y \text{\ do\ }
+  \text{if\ } x \leq y
+    \text{\ then\ } y := y-x
+    \text{\ else\ } x := x-y)
     ,s[y \mapsto 12]
   \rangle
 }

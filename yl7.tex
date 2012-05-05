@@ -1,3 +1,61 @@
 \section{Ülesanne 7}
+Abstraktse masina semantika täiendused on:
+\\
+\(\langle \text{DUP:}c,\ z\text{:}e,\ s \rangle \triangleright \langle c,\ z\text{:}z\text{:}e,\ s \rangle \), kus \(z \in (Z \cup T) \)
+\\
+\(\langle \text{SWAP:}c,\ z_1\text{:}z_2\text{:}e,\ s \rangle \triangleright \langle c,\ z_2\text{:}z_1\text{:}e,\ s \rangle \), kus \(z \in (Z \cup T) \)
+\\
+\\
+Osa 2: Näita, et 
+\\
+\(
+  CS\llbracket x:=z-y \rrbracket : CS\llbracket w:= x * z \rrbracket
+  \)
+ja
+\\
+\texttt{\footnotesize FETCH z : DUP : FETCH y : SWAP : SUB : DUP : STORE x : MUL : STORE w}
+\\
+on samaväärsed.
+\\
+Esimesest koodilõigust saab kompileerida:
+\\
+\\
+\(
+  CS\llbracket x:=z-y \rrbracket : CS\llbracket w:= x * z \rrbracket \Rightarrow\\
+  CA\llbracket z-y \rrbracket : \texttt{\footnotesize STORE x} : CA\llbracket x*z \rrbracket : \texttt{\footnotesize STORE w} \Rightarrow\\
+  CA\llbracket y \rrbracket : CA\llbracket z \rrbracket : \texttt{\footnotesize SUB} : \texttt{\footnotesize STORE x} : 
+    CA\llbracket z \rrbracket : CA\llbracket x \rrbracket : \texttt{\footnotesize MUL}  : \texttt{\footnotesize STORE w} \Rightarrow\\
+  \texttt{\footnotesize FETCH y}  : \texttt{\footnotesize FETCH z} : \texttt{\footnotesize SUB} : \texttt{\footnotesize STORE x} : 
+    \texttt{\footnotesize FETCH z} : \texttt{\footnotesize FETCH x} : \texttt{\footnotesize MUL}  : \texttt{\footnotesize STORE w} \\
+\)
+\\
+Samaväärsuse tõestus:
+\\
+Esimesest koodilõiku interpreteerides saab selgitada selle mõju olekule:
 
+\begin{align*}
+  & \texttt{\footnotesize FETCH y}    & e = & [y]      &\ s & = []\\
+  & \texttt{\footnotesize FETCH z}    & e = & [z,y]    &\ s & = []\\
+  & \texttt{\footnotesize SUB}        & e = & [(z-y)]  &\ s & = []\\
+  & \texttt{\footnotesize STORE x}    & e = & []       &\ s & = [x \mapsto (z-y)]\\
+  & \texttt{\footnotesize FETCH z}    & e = & [z]      &\ s & = [x \mapsto (z-y)]\\
+  & \texttt{\footnotesize FETCH x}    & e = & [x,z]    &\ s & = [x \mapsto (z-y)]\\
+  & \texttt{\footnotesize MUL}        & e = & [(x*z)]  &\ s & = [x \mapsto (z-y)]\\
+  & \texttt{\footnotesize STORE w}    & e = & []       &\ s & = [x \mapsto (z-y), w \mapsto (x*z)] = 
+    [x \mapsto (z-y), w \mapsto ((z-y)*z)] \\
+\end{align*}
+\begin{align*}
+  & \texttt{\footnotesize FETCH z}  & e = & [z]             &\ s & = []\\
+  & \texttt{\footnotesize DUP}      & e = & [z,z]           &\ s & = []\\
+  & \texttt{\footnotesize FETCH y}  & e = & [y,z,z]         &\ s & = []\\
+  & \texttt{\footnotesize SWAP}     & e = & [z,y,z]         &\ s & = []\\
+  & \texttt{\footnotesize SUB}      & e = & [(z-y),z]       &\ s & = []\\
+  & \texttt{\footnotesize DUP}      & e = & [(z-y),(z-y),z] &\ s & = []\\
+  & \texttt{\footnotesize STORE x}  & e = & [(z-y),z]       &\ s & = [x \mapsto (z-y)]\\
+  & \texttt{\footnotesize MUL}      & e = & [((z-y)*z)]     &\ s & = [x \mapsto (z-y)]\\
+  & \texttt{\footnotesize STORE w}  & e = & []              &\ s & = [x \mapsto (z-y), w \mapsto ((z-y)*z)]\\
+\end{align*}
 
+Mõlema koodilõigu käivitamisel saadud lõpptulemused (e ja s) on võrdsed,
+mistõttu võib väita, et koodilõigud on  samatähenduslikud käivitamise
+lõpptulemuse osas.

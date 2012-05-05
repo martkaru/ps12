@@ -5,8 +5,8 @@ Aritmeetikaavaldise \(b?a_0:a_1\) toetamiseks on tarvis lisada järgmised reegli
 
 \(
 \cfrac
-  {\langle a_0,s \rangle \rightarrow \textit{Aexp} \; z}
-  {\langle b?a_0:a_1,s \rangle  \rightarrow \textit{Aexp} \; z}
+  {\langle a_0,s \rangle \rightarrow _\mathrm{Aexp} z}
+  {\langle b?a_0:a_1,s \rangle  \rightarrow _\mathrm{Aexp} z}
   \;
   \text{if}  B\llbracket b \rrbracket = \text{tt}
 \)
@@ -15,8 +15,8 @@ ja
 
 \(
 \cfrac
-  {\langle a_1,s \rangle \rightarrow \textit{Aexp} \; z}
-  {\langle b?a_0:a_1,s \rangle  \rightarrow \textit{Aexp} \; z}
+  {\langle a_1,s \rangle \rightarrow _\mathrm{Aexp} z}
+  {\langle b?a_0:a_1,s \rangle  \rightarrow _\mathrm{Aexp} z}
   \;
   \text{if} \; B\llbracket b \rrbracket = \text{ff}
 \)
@@ -33,8 +33,8 @@ globaalsele olekule mittemõjuv.
 
 \(
 \cfrac
-  {\langle S,s \rangle \rightarrow s', \quad \langle a, s' \rangle \rightarrow  \textit{Aexp} \; z}
-  {\langle S \triangleright a,s \rangle  \rightarrow \textit{Aexp} \; z}
+  {\langle S,s \rangle \rightarrow s', \quad \langle a, s' \rangle \rightarrow _\mathrm{Aexp} z}
+  {\langle S \triangleright a,s \rangle  \rightarrow _\mathrm{Aexp} z}
 \)
 
 

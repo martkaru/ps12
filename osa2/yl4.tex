@@ -1,0 +1,219 @@
+\section{Ülesanne 4}
+
+\(
+S_{ds} \llbracket
+\text{while\ } x \neq y \text{\ do\ }
+  (\text{if\ } x \leq y
+  \text{\ then\ } y := y - x \text{\ else\ } x := x - y )
+\rrbracket s
+= FIX \ F \ s,
+\\
+\text{kus} \ F \  g = cond(B \llbracket x \neq y \rrbracket, 
+g \circ S_{ds} \llbracket \text{if\ } x \leq y \text{\ then\ } y := y - x
+\text{\ else\ } x := x - y \rrbracket,
+id
+)
+\),
+
+millest tuletub 
+
+\(
+  \ F \  g \ s = \left\{
+  \begin{array}{l l}
+    g(
+      S_{ds} \llbracket
+        \text{if\ } x \leq y
+        \text{\ then\ } y := y - x \text{\ else\ } x := x - y
+      \rrbracket s
+    ) & \quad \text{kui}\ sx \neq sy \\
+    s   & \quad \text{kui}\ sx = sy\\
+  \end{array} \right.
+\)
+
+ja mille abil saab alt-üles leida vähima ülemise raja:
+
+\(
+F_0 \  s = undef
+\)
+
+\(
+F_1 \  s = \left\{
+  \begin{array}{l l}
+    F_0(
+      S_{ds} \llbracket
+        \text{if\ } x \leq y
+        \text{\ then\ } y := y - x \text{\ else\ } x := x - y
+      \rrbracket s
+    ) & \quad \text{kui}\ sx \neq sy \\
+    s   & \quad \text{kui}\ sx = sy\\
+  \end{array} \right.
+\)
+
+\(
+= \left\{
+  \begin{array}{l l}
+    undef & \quad \text{kui}\ sx \neq sy \\
+    s   & \quad \text{kui}\ sx = sy\\
+  \end{array} \right.
+\)
+
+\(
+F_2 \ s = \left\{
+    \begin{array}{l l}
+    F_1(
+      S_{ds} \llbracket
+        \text{if\ } x \leq y
+        \text{\ then\ } y := y - x \text{\ else\ } x := x - y
+      \rrbracket s = s'
+    ) & \quad \text{kui}\ sx \neq sy \\
+    s   & \quad \text{kui}\ sx = sy\\
+  \end{array} \right.
+\)
+
+\(
+= 
+\left\{
+  \begin{array}{l l}
+
+    \left\{ \begin{array}{l l}
+      undef & \quad \text{kui}\ s'x \neq s'y \\
+      s'   & \quad \text{kui}\ s'x = s'y\\
+    \end{array} \right\}
+    &  \quad \text{kui}\ sx \neq sy \\
+    \\
+    s
+    & \quad \text{kui}\ sx = sy\\
+
+  \end{array}
+\right.
+\)
+
+\(
+= 
+\left\{
+  \begin{array}{l l}
+  \left\{
+    \begin{array}{l l}
+    \left\{
+      \begin{array}{l l}
+        undef & \quad \text{kui}\ s'x \neq s'y \\
+        s[y \mapsto sy - sx] & \quad \text{kui}\ s'x = s'y\\
+      \end{array}
+    \right\} & \quad \text{kui}\ sx \leq sy
+\\
+    \left\{
+      \begin{array}{l l}
+        undef & \quad \text{kui}\ s'x \neq s'y \\
+        s[x \mapsto sx - sy] & \quad \text{kui}\ s'x = s'y\\
+      \end{array}
+    \right\} & \quad \text{kui}\ sx > sy
+    \end{array}
+  \right\}
+  &  \quad \text{kui}\ sx \neq sy \\
+\\
+  s   & \quad \text{kui}\ sx = sy\\
+  \end{array}
+\right.
+\)
+
+\(
+s' = 
+\left\{\begin{array}{l l}
+  s[y \mapsto sy - sx] & \quad \text{kui}\ sx \leq sy\\
+  s[x \mapsto sx - sy] & \quad \text{kui}\ sx > sy\\
+\end{array} \right.
+\)
+
+\(
+= 
+\left\{\begin{array}{l l}
+  s'x = sx \wedge s'y = sy - sx & \quad \text{kui}\ sx \leq sy\\
+  s'x = sx - sy \wedge s'y = sy & \quad \text{kui}\ sx > sy\\
+\end{array} \right.
+\)
+
+\(
+F_2 \ s = 
+\left\{
+  \begin{array}{l l}
+  \left\{
+    \begin{array}{l l}
+    \left\{
+      \begin{array}{l l}
+        undef & \quad \text{kui}\ sx \neq (sy - sx) \\
+        s[y \mapsto sy - sx] & \quad \text{kui}\ sx = (sy - sx)
+      \end{array}
+    \right\} & \quad \text{kui}\ sx \leq sy
+    \\
+    \left\{
+      \begin{array}{l l}
+        undef & \quad \text{kui}\ (sx - sy) \neq sy \\
+        s[x \mapsto sx - sy] & \quad \text{kui}\ (sx - sy) = sy\\
+      \end{array}
+    \right\} & \quad \text{kui}\ sx > sy
+    \end{array}
+  \right\}
+  &  \quad \text{kui}\ sx \neq sy \\
+  \\
+  s   & \quad \text{kui}\ sx = sy\\
+  \end{array}
+\right.
+\)
+
+\(
+= 
+\left\{
+  \begin{array}{l l}
+  \left\{
+    \begin{array}{l l}
+    \left\{
+      \begin{array}{l l}
+        undef & \quad \text{kui}\ 2sx \neq sy \\
+        s[y \mapsto sy - sx] & \quad \text{kui}\ 2sx = sy
+      \end{array}
+    \right\} & \quad \text{kui}\ sx \leq sy
+    \\
+    \left\{
+      \begin{array}{l l}
+        undef & \quad \text{kui}\ sx \neq 2sy \\
+        s[x \mapsto sx - sy] & \quad \text{kui}\ sx = 2sy\\
+      \end{array}
+    \right\} & \quad \text{kui}\ sx > sy
+    \end{array}
+  \right\}
+  &  \quad \text{kui}\ sx \neq sy \\
+  \\
+  s   & \quad \text{kui}\ sx = sy\\
+  \end{array}
+\right.
+\)
+
+\(
+= 
+\left\{ \begin{array}{l l}
+    \left\{ \begin{array}{l l}
+        undef & \quad \text{kui}\ 2sx \neq sy \\
+        s[y \mapsto sy - sx] & \quad \text{kui}\ 2sx = sy
+    \end{array} \right\} & \quad \text{kui}\ sx < sy
+    \\
+    \left\{ \begin{array}{l l}
+        undef & \quad \text{kui}\ sx \neq 2sy \\
+        s[x \mapsto sx - sy] & \quad \text{kui}\ sx = 2sy\\
+    \end{array} \right\} & \quad \text{kui}\ sx > sy
+  \\
+  s
+  & \quad \text{kui}\ sx = sy\\
+  \end{array} \right.
+\)
+
+\(
+= 
+\left\{
+  \begin{array}{l l}
+  undef                & \quad \text{kui}\ (sx \neq sy) \wedge (2sx \neq sy) \wedge (sx \neq 2sy)\\
+  s[y \mapsto sy - sx] & \quad \text{kui}\ 2sx = sy \\
+  s[x \mapsto sx - sy] & \quad \text{kui}\ sx = 2sy \\
+  s                    & \quad \text{kui}\ sx = sy\\
+  \end{array}
+\right.
+\)

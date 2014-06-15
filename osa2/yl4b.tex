@@ -1,0 +1,32 @@
+\subsection{Jätkuedastussemantikas}
+
+\footnotesize
+\(
+S'_{gs} \llbracket
+\text{while\ } x \neq y \text{\ do\ }
+  (\text{if\ } x \leq y
+  \text{\ then\ } y := y - x \text{\ else\ } x := x - y )
+\rrbracket
+= FIX \ G,
+\\
+\text{kus} \ G(g) c = cond(B \llbracket x \neq y \rrbracket, 
+S'_{cs} \llbracket \text{if\ } x \leq y \text{\ then\ } y := y - x
+\text{\ else\ } x := x - y \rrbracket(g c),
+c
+)
+\\
+\)
+
+Reegli \(S'_{cs} \llbracket S \rrbracket c = c \circ S_{ds} \llbracket S \rrbracket \) (raamatus punkt 4.74)
+järgi võib tuletada:
+
+\( \\
+(FIX \ G) c \ s = (c \circ (FIX \ F))(s) = c( FIX \ F \ s) \\
+\\
+= \left \{ \begin{array}{l l}
+  c ( s[y \mapsto \frac{sy}{i}][x \mapsto \frac{sx}{j} ]) & \quad \text{kui}\ (i * sx = j * sy) \wedge (i \neq j) \\
+  c s & \quad \text{kui}\ sx = sy \\
+\end{array} \right.
+\\
+\)
+

@@ -1,6 +1,7 @@
 \section{Ülesanne 4}
 \subsection{Denotatsioonisemantikas}
 
+\footnotesize
 \(
 S_{ds} \llbracket
 \text{while\ } x \neq y \text{\ do\ }
@@ -38,7 +39,7 @@ ja mille abil saab alt-üles leida vähima ülemise raja:
 %%%%%%%%%%%%%%%%%%%%
 
 \(
-F_0 \  s = undef
+(F_0 (\bot)) s = undef
 \)
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -46,7 +47,7 @@ F_0 \  s = undef
 %%%%%%%%%%%%%%%%%%%%
 
 \(
-F_1 \  s = \left\{
+(F_1(\bot)) s = \left\{
   \begin{array}{l l}
     F_0(
       S_{ds} \llbracket
@@ -66,11 +67,32 @@ F_1 \  s = \left\{
   \end{array} \right.
 \)
 
+
+%%%%%%%%%%%%%%%%%%%%%
+% s'
+%%%%%%%%%%%%%%%%%%%%
+\(
+s' = 
+\left\{\begin{array}{l l}
+  s[y \mapsto sy - sx] & \quad \text{kui}\ sx \leq sy\\
+  s[x \mapsto sx - sy] & \quad \text{kui}\ sx > sy\\
+\end{array} \right.
+\)
+
+\(
+= 
+\left\{\begin{array}{l l}
+  s'x = sx \wedge s'y = sy - sx & \quad \text{kui}\ sx \leq sy\\
+  s'x = sx - sy \wedge s'y = sy & \quad \text{kui}\ sx > sy\\
+\end{array} \right.
+\)
+
+
 %%%%%%%%%%%%%%%%%%%%%
 % F2
 %%%%%%%%%%%%%%%%%%%%
 \(
-F_2 \ s = \left\{
+(F_2(\bot)) s = \left\{
     \begin{array}{l l}
     F_1(
       S_{ds} \llbracket
@@ -129,23 +151,7 @@ F_2 \ s = \left\{
 \)
 
 \(
-s' = 
-\left\{\begin{array}{l l}
-  s[y \mapsto sy - sx] & \quad \text{kui}\ sx \leq sy\\
-  s[x \mapsto sx - sy] & \quad \text{kui}\ sx > sy\\
-\end{array} \right.
-\)
-
-\(
-= 
-\left\{\begin{array}{l l}
-  s'x = sx \wedge s'y = sy - sx & \quad \text{kui}\ sx \leq sy\\
-  s'x = sx - sy \wedge s'y = sy & \quad \text{kui}\ sx > sy\\
-\end{array} \right.
-\)
-
-\(
-F_2 \ s = 
+ = 
 \left\{
   \begin{array}{l l}
   \left\{
@@ -230,12 +236,24 @@ F_2 \ s =
 \right.
 \)
 
+\(
+= 
+\left\{
+  \begin{array}{l l}
+  undef                & \quad \text{kui}\ (sx \neq sy) \wedge (2sx \neq sy) \wedge (sx \neq 2sy)\\
+  s[y \mapsto \frac{sy}{2} ] & \quad \text{kui}\ 2sx = sy \\
+  s[x \mapsto \frac{sx}{2} ] & \quad \text{kui}\ sx = 2sy \\
+  s                    & \quad \text{kui}\ sx = sy\\
+  \end{array}
+\right.
+\)
+
 
 %%%%%%%%%%%%%%%%%%%%%
 % F3
 %%%%%%%%%%%%%%%%%%%%
 \(
-F_3 \ s = \left\{
+(F_3(\bot)) s = \left\{
     \begin{array}{l l}
     F_2(
       S_{ds} \llbracket
@@ -243,6 +261,104 @@ F_3 \ s = \left\{
         \text{\ then\ } y := y - x \text{\ else\ } x := x - y
       \rrbracket s = s'
     ) & \quad \text{kui}\ sx \neq sy \\
-    s   & \quad \text{kui}\ sx = sy\\
-  \end{array} \right.
+    s & \quad \text{kui}\ sx = sy\\
+  \end{array}
+  \right.
+\)
+
+\(
+=
+\left\{
+  \begin{array}{l l}
+    \left \{ \begin{array}{l l}
+      undef & \quad \text{kui}\ (s'x \neq s'y) \wedge (2s'x \neq s'y) \wedge (s'x \neq 2s'y)\\
+      s'[y \mapsto \frac{s'y}{2} ] & \quad \text{kui}\ 2s'x = s'y \\
+      s'[x \mapsto \frac{s'x}{2} ] & \quad \text{kui}\ s'x = 2s'y \\
+      s'                    & \quad \text{kui}\ s'x = s'y\\
+    \end{array} \right \} & \quad \text{kui}\ sx \neq sy \\
+    s & \quad \text{kui}\ sx = sy\\
+  \end{array}
+  \right.
+\)
+
+\(
+=
+\left \{ \begin{array}{l l}
+  \left \{ \begin{array}{l l}
+    \left \{ \begin{array}{l l}
+      undef & \quad \text{kui}\ (3sx \neq sy) \wedge (3sx \neq 2sy) \wedge (2sx \neq sy)\\
+      s[y \mapsto \frac{sy}{3}][y \mapsto \frac{sy}{3} ] & \quad \text{kui}\ 3sx = sy \\
+      s[y \mapsto \frac{sy}{3}][x \mapsto \frac{sx}{2} ] & \quad \text{kui}\ 3sx = 2sy \\
+      s[y \mapsto \frac{sy}{2}] & \quad \text{kui}\ 2sx = sy \\
+    \end{array} \right \} & \quad \text{kui}\ sx \leq sy \\
+    \left \{ \begin{array}{l l}
+      undef & \quad \text{kui}\ (2sx \neq 3sy) \wedge (sx \neq 3sy) \wedge (sx \neq 2sy) \\
+      s[x \mapsto \frac{sx}{3}][y \mapsto \frac{sy}{2} ] & \quad \text{kui}\ 2sx = 3sy \\
+      s[x \mapsto \frac{sx}{3}][x \mapsto \frac{sx}{3} ] & \quad \text{kui}\ sx = 3sy \\
+      s[x \mapsto \frac{sx}{2}] & \quad \text{kui}\ sx = 2sy \\
+    \end{array} \right \} & \quad \text{kui}\ sx > sy \\
+  \end{array} \right \} & \quad \text{kui}\ sx \neq sy \\
+  s & \quad \text{kui}\ sx = sy \\
+\end{array} \right.
+\)
+
+\(
+\\
+\\
+=
+\left \{ \begin{array}{l l}
+  undef & \quad \text{kui}\ (3sx \neq sy) \wedge (3sx \neq 2sy) \wedge (2sx \neq sy) \wedge \\
+        & \quad \wedge (2sx \neq 3sy) \wedge (3sx \neq 2sy) \wedge (sx \neq 2sy) \wedge (sx \neq sy) \\
+  s[y \mapsto \frac{sy}{3} ] & \quad \text{kui}\ 3sx = sy \\
+  s[y \mapsto \frac{sy}{3}][x \mapsto \frac{sx}{2} ] & \quad \text{kui}\ 3sx = 2sy \\
+  s[y \mapsto \frac{sy}{2}] & \quad \text{kui}\ 2sx = sy \\
+  s[x \mapsto \frac{sx}{3}][y \mapsto \frac{sy}{2} ] & \quad \text{kui}\ 2sx = 3sy \\
+  s[x \mapsto \frac{sx}{3} ] & \quad \text{kui}\ sx = 3sy \\
+  s[x \mapsto \frac{sx}{2}] & \quad \text{kui}\ sx = 2sy \\
+  s & \quad \text{kui}\ sx = sy \\
+\end{array} \right.
+\)
+
+\(
+\\
+\\
+=
+\left \{ \begin{array}{l l}
+  undef & \quad \text{kui}\ (3sx \neq sy) \wedge (3sx \neq 2sy) \wedge (2sx \neq sy) \wedge \\
+        & \quad \wedge (2sx \neq 3sy) \wedge (3sx \neq 2sy) \wedge (sx \neq 2sy) \wedge (sx \neq sy) \\
+  s[y \mapsto \frac{sy}{3} ] & \quad \text{kui}\ 3sx = sy \\
+  s[x \mapsto \frac{sx}{3} ] & \quad \text{kui}\ sx = 3sy \\
+  s[y \mapsto \frac{sy}{3}][x \mapsto \frac{sx}{2} ] & \quad \text{kui}\ 3sx = 2sy \\
+  s[x \mapsto \frac{sx}{3}][y \mapsto \frac{sy}{2} ] & \quad \text{kui}\ 2sx = 3sy \\
+  s[y \mapsto \frac{sy}{2}] & \quad \text{kui}\ 2sx = sy \\
+  s[x \mapsto \frac{sx}{2}] & \quad \text{kui}\ sx = 2sy \\
+  s & \quad \text{kui}\ sx = sy \\
+\end{array} \right.
+\)
+
+%%%%%%%%%%%%%%%%%%%%%
+% FN
+%%%%%%%%%%%%%%%%%%%%
+\(
+\\
+\\
+(F_n(\bot)) s=
+\left \{ \begin{array}{l l}
+  undef & \quad \text{kui}\ (i * sx \neq j * sy) \wedge (1 \leq i \geq n) \wedge (1 \leq j \geq n) \\
+  s[y \mapsto \frac{sy}{i}][x \mapsto \frac{sx}{j} ] & \quad \text{kui}\ (i * sx = j * sy) \wedge (1 \leq i \geq n) \wedge (1 \leq j \geq n) \wedge (i \neq j) \\
+  s & \quad \text{kui}\ sx = sy \\
+\end{array} \right.
+\)
+
+%%%%%%%%%%%%%%%%%%%%%
+% F
+%%%%%%%%%%%%%%%%%%%%
+\(
+\\
+\\
+(FIX \ F) s =
+\left \{ \begin{array}{l l}
+  s[y \mapsto \frac{sy}{i}][x \mapsto \frac{sx}{j} ] & \quad \text{kui}\ (i * sx = j * sy) \wedge (i \neq j) \\
+  s & \quad \text{kui}\ sx = sy \\
+\end{array} \right.
 \)

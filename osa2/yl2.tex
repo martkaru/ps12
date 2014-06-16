@@ -1,25 +1,18 @@
 \section{Ülesanne 2}
 
-Ccpo olemasolu tuvastamiseks tuleb esmalt kontrollida hulga \((D_0 \times D_1,
-\sqsubseteq )\) osaliselt järjestatuks olemist, kontrollides refleksiivsust,
-transitiivsust ja antisümmeetrilisust hulga elementidel ning leida ahelates
-vähim ülemine raja:
+Hulga \((D_0 \times D_1, \sqsubseteq )\) ccpo-ks olemise näitamiseks on tarvis
+veenduda, et eksisteerib \(\sqcup Y \) üle kõikide moodustatud hulga ahelate Y.
 
-Osalise järjestatuse kontroll:
+Selleks tuleb vaadata eraldi kahte hulga elemente defineeriva reegli osa:
 
-1.refleksiivus: \((d_0, d_1) \sqsubseteq (d_0, d_1)\) kehtib (tehtes sisaldub
-võrdsus), sest \(d_0 = d_0\) ja \(d_1 \sqsubseteq_0 d_1 \)
+1. Reegli \( (d_0 \neq e_0) \wedge (d_0 \sqsubseteq e_0) \) moodustatud elemendid
+on moodustatud sarnaselt \((D_0, \sqsubseteq_0)\) moodustamisele ning omavad
+\(\sqcup Y \) seetõttu ka moodustatud hulgas \((D_0 \times D_1, \sqsubseteq )\).
 
-2.transitiivsus: kui \((d_0, d_1) \sqsubseteq (e_0, e_1)\) ja \((e_0, e_1)
-\sqsubseteq (f_0, f_1)\), siis kehtib ka \((d_0, d_1) \sqsubseteq (f_0, f_1)\)
+2. Reegli \( (d_0 = e_0) \wedge (d_1 \sqsubseteq e_1) \) moodustatud elemendid
+on moodustatud sarnaselt \((D_1, \sqsubseteq_1)\) moodustamisele ning omavad
+\(\sqcup Y \) seetõttu ka moodustatud hulgas \((D_0 \times D_1, \sqsubseteq )\).
 
-3.antisümmeetrilisus: kui \((d_0, d_1) \sqsubseteq (e_0, e_1)\) ja \((e_0, e_1)
-\sqsubseteq (d_0, d_1)\), siis \((d_0, d_1) = (e_0, e_1)\)
-
-Vähima ülemise raja tuvastamine:
-
-Kui \((D_0, \sqsubseteq_0)\) ja \((D_1, \sqsubseteq_1)\) on ccpo-d ja tehe
-\(\times\) on mõlema operandi suhtes monotoonne (ehk \(f_0:D_0 \rightarrow D_0
-\times D_1\) on monotoonne ja \(f_1:D_1 \rightarrow D_0 \times D_1\) on
-monotoonne), siis raamatu lemma 4.30 järgi on ka \((D_0 \times D_1,
-\sqsubseteq)\) ccpo ja sellel eksisteerib vähim ülemine raja.
+Kuna \((D_0 \times D_1, \sqsubseteq )\) on moodustatud karteesia korrutisena,
+eksisteerib ka element \( (\sqcup d_0, \sqcup d_1 ) \), mis on moodustatud hulga
+\(\sqcup Y \).
